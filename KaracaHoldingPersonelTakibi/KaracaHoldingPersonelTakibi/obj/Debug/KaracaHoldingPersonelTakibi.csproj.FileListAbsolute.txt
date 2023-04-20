@@ -20,3 +20,4 @@ C:\Users\Talha\Desktop\donem-projesi-talhakaracaa\KaracaHoldingPersonelTakibi\Ka
 C:\Users\Talha\Desktop\donem-projesi-talhakaracaa\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.csproj.CoreCompileInputs.cache
 C:\Users\Talha\Desktop\donem-projesi-talhakaracaa\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.exe
 C:\Users\Talha\Desktop\donem-projesi-talhakaracaa\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.pdb
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.Form2.resources

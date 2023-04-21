@@ -20,4 +20,15 @@ C:\Users\Talha\Desktop\donem-projesi-talhakaracaa\KaracaHoldingPersonelTakibi\Ka
 C:\Users\Talha\Desktop\donem-projesi-talhakaracaa\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.csproj.CoreCompileInputs.cache
 C:\Users\Talha\Desktop\donem-projesi-talhakaracaa\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.exe
 C:\Users\Talha\Desktop\donem-projesi-talhakaracaa\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.pdb
-C:\Users\Talha\Desktop\donem-projesi-talhakaracaa\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.Form2.resources
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\bin\Debug\KaracaHoldingPersonelTakibi.exe.config
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\bin\Debug\KaracaHoldingPersonelTakibi.exe
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\bin\Debug\KaracaHoldingPersonelTakibi.pdb
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.csproj.AssemblyReference.cache
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.csproj.SuggestedBindingRedirects.cache
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.Form1.resources
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.Form2.resources
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.Properties.Resources.resources
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.csproj.GenerateResource.cache
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.csproj.CoreCompileInputs.cache
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.exe
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.pdb

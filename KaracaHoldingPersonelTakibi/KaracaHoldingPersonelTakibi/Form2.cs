@@ -249,5 +249,78 @@ namespace KaracaHoldingPersonelTakibi
             else
                 e.Handled = true;
         }
+
+        int parola_skoru = 0;
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            string parola_seviyesi = "";
+            int kucuk_harf_skoru = 0, buyuk_harf_skoru = 0, rakam_skoru = 0, sembol_skoru = 0;
+            string sifre = textBox5.Text;
+            //Regex kütüphanesi ingilizce karakterleri baz aldığından, Türkçe karakterlerde sorun yaşamamak için şifre string ifadesindeki Türkçe karakterleri inglizce karakterlere dönüştürmemiz gerekiyor.
+            string duzeltilmis_sifre = sifre = "";
+            duzeltilmis_sifre = sifre;
+            duzeltilmis_sifre = duzeltilmis_sifre.Replace('İ', 'I');
+            duzeltilmis_sifre = duzeltilmis_sifre.Replace('ı', 'i');
+            duzeltilmis_sifre = duzeltilmis_sifre.Replace('Ç', 'C');
+            duzeltilmis_sifre = duzeltilmis_sifre.Replace('ç', 'c');
+            duzeltilmis_sifre = duzeltilmis_sifre.Replace('Ş', 'S');
+            duzeltilmis_sifre = duzeltilmis_sifre.Replace('ş', 's');
+            duzeltilmis_sifre = duzeltilmis_sifre.Replace('Ğ', 'G');
+            duzeltilmis_sifre = duzeltilmis_sifre.Replace('ğ', 'g');
+            duzeltilmis_sifre = duzeltilmis_sifre.Replace('Ü', 'U');
+            duzeltilmis_sifre = duzeltilmis_sifre.Replace('ü', 'u');
+            duzeltilmis_sifre = duzeltilmis_sifre.Replace('Ö', 'O');
+            duzeltilmis_sifre = duzeltilmis_sifre.Replace('ö', 'o');
+            if(sifre!= duzeltilmis_sifre)
+            {
+                sifre = duzeltilmis_sifre;
+                textBox5.Text = sifre;
+                MessageBox.Show("Paroladaki Türkçe Karakterler İngilizce karakterlere dönüştürülmüştür");
+            }
+            // 1 küçük harf 10 puan, 2 ve üzeri 20 puan
+            int az_karakter_sayisi = sifre.Length - Regex.Replace(sifre, "[a-z]", "").Length;
+            kucuk_harf_skoru = Math.Min(2, az_karakter_sayisi)*10;
+
+            // 1 büyük harf 10 puan, 2 ve üzeri 20 puan
+            int AZ_karakter_sayisi = sifre.Length - Regex.Replace(sifre, "[A-Z]", "").Length;
+            buyuk_harf_skoru = Math.Min(2, AZ_karakter_sayisi) * 10;
+
+            // 1 rakam harf 10 puan, 2 ve üzeri 20 puan
+            int rakam_sayisi = sifre.Length - Regex.Replace(sifre, "[0-9]", "").Length;
+            rakam_sayisi = Math.Min(2, rakam_sayisi) * 10;
+
+            // 1 sembol harf 10 puan, 2 ve üzeri 20 puan
+            int sembol_sayisi = sifre.Length - az_karakter_sayisi - AZ_karakter_sayisi - rakam_sayisi;
+            sembol_skoru = Math.Min(2, sembol_sayisi) * 10;
+
+            parola_skoru = kucuk_harf_skoru + buyuk_harf_skoru + rakam_skoru + sembol_skoru;
+            if (sifre.Length == 9)
+                parola_skoru += 10;
+            else if (sifre.Length == 10)
+                parola_skoru += 20;
+
+            if (kucuk_harf_skoru == 0 || buyuk_harf_skoru == 0 || rakam_skoru == 0 || sembol_skoru == 0)
+                label22.Text = "Büyük Harf,Küçük Harf, rakam ve sembol mutlaka kullanmalısın!";
+            if (kucuk_harf_skoru != 0 && buyuk_harf_skoru != 0 && rakam_skoru != 0 && sembol_skoru != 0)
+                label22.Text = "";
+            if (parola_skoru < 70)
+                parola_seviyesi = "Kabul Edilmez!";
+            else if (parola_skoru == 70 || parola_skoru == 80)
+                parola_seviyesi = "Güçlü";
+            else if (parola_skoru == 90 || parola_skoru == 100)
+                parola_seviyesi = "Çok Güçlü";
+
+            label9.Text = "%" + Convert.ToString(parola_skoru);
+            label10.Text = parola_seviyesi;
+            progressBar1.Value = parola_skoru;
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox6.Text != textBox5.Text)
+                errorProvider1.SetError(textBox6, "Parola Tekrarı Eşleşmiyor!");
+            else
+                errorProvider1.Clear();
+        }
     }
 }

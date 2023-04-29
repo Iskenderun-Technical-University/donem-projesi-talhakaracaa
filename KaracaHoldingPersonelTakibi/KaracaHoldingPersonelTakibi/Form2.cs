@@ -13,7 +13,7 @@ using System.Data.OleDb;
 using System.Text.RegularExpressions;
 //Giriş-Çıkış işlemlerine ilişkin kütüphanenin tanımlanması
 using System.IO;
-
+using System.Diagnostics.Eventing.Reader;
 
 namespace KaracaHoldingPersonelTakibi
 {
@@ -74,10 +74,104 @@ namespace KaracaHoldingPersonelTakibi
         {
 
         }
-
+        private void topPage1_temizle()
+        {
+            textBox1.Clear(); textBox2.Clear(); textBox3.Clear(); textBox4.Clear(); textBox5.Clear(); textBox6.Clear();
+        }
+        private void topPage2_temizle()
+        {
+            pictureBox2.Image = null;
+            maskedTextBox1.Clear(); 
+            maskedTextBox2.Clear();
+            maskedTextBox3.Clear();
+            maskedTextBox4.Clear();
+            comboBox1.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1; 
+            comboBox3.SelectedIndex = -1;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            string yetki = "";
+            bool kayitkontrol = false;
 
+            baglantim.Open();
+            OleDbCommand selectsorgu = new OleDbCommand("select * from kullanicilar where tcno='" + textBox1.Text + "'", baglantim);
+            OleDbDataReader kayitokuma = selectsorgu.ExecuteReader();
+            while (kayitokuma.Read())
+            {
+                kayitkontrol = true;
+                break;
+            }
+            baglantim.Close();
+
+            if (kayitkontrol == false)
+            {
+                //Tc Kimlik No Kontrolü
+                if (textBox1.Text.Length < 11 || textBox1.Text == "") 
+                    label1.ForeColor = Color.Red;
+                else
+                    label1.ForeColor = Color.Black;
+                
+                //Adı Veri Kontrolü
+                if (textBox2.Text.Length < 2 || textBox2.Text == "")
+                    label2.ForeColor = Color.Red;
+                else
+                    label2.ForeColor = Color.Black;
+               
+                //Soyadı Veri Kontrolü
+                if (textBox3.Text.Length < 2 || textBox1.Text == "")
+                    label3.ForeColor = Color.Red;
+                else
+                    label3.ForeColor = Color.Black;
+               
+                //Kullanıcı Adı Veri Kontrolü
+                if (textBox4.Text.Length < 8 || textBox1.Text == "")
+                    label5.ForeColor = Color.Red;
+                else
+                    label5.ForeColor = Color.Black;
+                
+                //Parola Veri Kontrolü
+                if (textBox5.Text=="" || parola_skoru<70)
+                    label6.ForeColor = Color.Red;
+                else
+                    label6.ForeColor = Color.Black;
+                
+                //Parola Tekrar Veri Kontrolü
+                if (textBox6.Text == "" || textBox5.Text!=textBox6.Text)
+                    label7.ForeColor = Color.Red;
+                else
+                    label7.ForeColor = Color.Black;
+
+                if (textBox1.Text.Length == 11 && textBox1.Text != "" && textBox2.Text != "" && textBox2.Text.Length > 1 && textBox3.Text != "" && textBox3.Text.Length > 1 && textBox4.Text != "" && textBox5.Text != "" && textBox6.Text != "" && textBox5.Text == textBox6.Text && parola_skoru >= 70)
+                {
+                    if (radioButton1.Checked == true)
+                        yetki = "Yönetici";
+                    else if (radioButton2.Checked == true)
+                        yetki = "Kullanıcı";
+                    try
+                    {
+                        baglantim.Open();
+                        OleDbCommand eklekomut = new OleDbCommand("insert intop kullanicilar values ('" + textBox1.Text + "','" + textBox2.Text + "', '" + textBox3.Text + "','" + yetki + "','" + textBox4.Text + "','" + textBox5.Text + "')", baglantim);
+                        eklekomut.ExecuteNonQuery();
+                        baglantim.Close();
+                        MessageBox.Show("Yeni kullanıcı kaydı oluşturuldu!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        topPage1_temizle();
+                    }
+                    catch (Exception hatamsj)
+                    {
+                        MessageBox.Show(hatamsj.Message);
+                        baglantim.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Yazı rengi kırımızı olan alanları yeniden gözden geçiriniz!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Girilen TC Kimlik Numarası daha önceden kayıtlıdır!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

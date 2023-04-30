@@ -351,7 +351,7 @@ namespace KaracaHoldingPersonelTakibi
             int kucuk_harf_skoru = 0, buyuk_harf_skoru = 0, rakam_skoru = 0, sembol_skoru = 0;
             string sifre = textBox5.Text;
             //Regex kütüphanesi ingilizce karakterleri baz aldığından, Türkçe karakterlerde sorun yaşamamak için şifre string ifadesindeki Türkçe karakterleri inglizce karakterlere dönüştürmemiz gerekiyor.
-            string duzeltilmis_sifre = sifre = "";
+            string duzeltilmis_sifre  = "";
             duzeltilmis_sifre = sifre;
             duzeltilmis_sifre = duzeltilmis_sifre.Replace('İ', 'I');
             duzeltilmis_sifre = duzeltilmis_sifre.Replace('ı', 'i');
@@ -381,7 +381,7 @@ namespace KaracaHoldingPersonelTakibi
 
             // 1 rakam harf 10 puan, 2 ve üzeri 20 puan
             int rakam_sayisi = sifre.Length - Regex.Replace(sifre, "[0-9]", "").Length;
-            rakam_sayisi = Math.Min(2, rakam_sayisi) * 10;
+            rakam_skoru = Math.Min(2, rakam_sayisi) * 10;
 
             // 1 sembol harf 10 puan, 2 ve üzeri 20 puan
             int sembol_sayisi = sifre.Length - az_karakter_sayisi - AZ_karakter_sayisi - rakam_sayisi;
@@ -415,6 +415,41 @@ namespace KaracaHoldingPersonelTakibi
                 errorProvider1.SetError(textBox6, "Parola Tekrarı Eşleşmiyor!");
             else
                 errorProvider1.Clear();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bool kayit_arama_durumu = false;
+            if (textBox1.Text.Length == 11)
+            {
+                baglantim.Open();
+                OleDbCommand selectsorgusu = new OleDbCommand("select * from kullanicilar where tcno='" + textBox1.Text + "'", baglantim);
+                OleDbDataReader kayitokuma = selectsorgusu.ExecuteReader();
+                while (kayitokuma.Read())
+                {
+                    kayit_arama_durumu = true;
+                    textBox2.Text = kayitokuma.GetValue(1).ToString();
+                    textBox3.Text = kayitokuma.GetValue(2).ToString();
+                    if (kayitokuma.GetValue(3).ToString() == "Yönetici")
+                        radioButton1.Checked = true;
+                    else
+                        radioButton2.Checked = true;
+                    textBox4.Text = kayitokuma.GetValue(4).ToString();
+                    textBox5.Text = kayitokuma.GetValue(5).ToString();
+                    textBox6.Text = kayitokuma.GetValue(5).ToString();
+                    break;
+                }
+                if (kayit_arama_durumu==false)
+                {
+                    MessageBox.Show("Aranan kayıt bulunamadı!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                baglantim.Close();
+            }
+            else
+            {
+                MessageBox.Show("Lütfen 11 haneli bir TC Kimlik No giriniz", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                topPage1_temizle();
+            }
         }
     }
 }

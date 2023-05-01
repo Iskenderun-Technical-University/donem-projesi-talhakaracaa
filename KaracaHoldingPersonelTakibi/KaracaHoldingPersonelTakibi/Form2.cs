@@ -176,7 +176,69 @@ namespace KaracaHoldingPersonelTakibi
 
         private void button3_Click(object sender, EventArgs e)
         {
+            string yetki = "";
 
+            //Tc Kimlik No Kontrolü
+            if (textBox1.Text.Length < 11 || textBox1.Text == "")
+                label1.ForeColor = Color.Red;
+            else
+                label1.ForeColor = Color.Black;
+
+            //Adı Veri Kontrolü
+            if (textBox2.Text.Length < 2 || textBox2.Text == "")
+                label2.ForeColor = Color.Red;
+            else
+                label2.ForeColor = Color.Black;
+
+            //Soyadı Veri Kontrolü
+            if (textBox3.Text.Length < 2 || textBox1.Text == "")
+                label3.ForeColor = Color.Red;
+            else
+                label3.ForeColor = Color.Black;
+
+            //Kullanıcı Adı Veri Kontrolü
+            if (textBox4.Text.Length < 8 || textBox1.Text == "")
+                label5.ForeColor = Color.Red;
+            else
+                label5.ForeColor = Color.Black;
+
+            //Parola Veri Kontrolü
+            if (textBox5.Text == "" || parola_skoru < 70)
+                label6.ForeColor = Color.Red;
+            else
+                label6.ForeColor = Color.Black;
+
+            //Parola Tekrar Veri Kontrolü
+            if (textBox6.Text == "" || textBox5.Text != textBox6.Text)
+                label7.ForeColor = Color.Red;
+            else
+                label7.ForeColor = Color.Black;
+
+            if (textBox1.Text.Length == 11 && textBox1.Text != "" && textBox2.Text != "" && textBox2.Text.Length > 1 && textBox3.Text != "" && textBox3.Text.Length > 1 && textBox4.Text != "" && textBox5.Text != "" && textBox6.Text != "" && textBox5.Text == textBox6.Text && parola_skoru >= 70)
+            {
+                if (radioButton1.Checked == true)
+                    yetki = "Yönetici";
+                else if (radioButton2.Checked == true)
+                    yetki = "Kullanıcı";
+                try
+                {
+                    baglantim.Open();
+                    OleDbCommand guncellekomutu = new OleDbCommand("update kullanicilar set ad='" + textBox2.Text + "', soyad='" + textBox3.Text + "',yetki='" + yetki + "',kullaniciadi='" + textBox4 + "',parola='" + textBox5.Text + "'where tcno='"+textBox1.Text+"'", baglantim);
+                    guncellekomutu.ExecuteNonQuery();
+                    baglantim.Close();
+                    MessageBox.Show("Kullanici bilgileri güncellendi!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    kullanicilari_goster();
+                }
+                catch (Exception hatamsj)
+                {
+                    MessageBox.Show(hatamsj.Message, "SKY Personel Takip Program", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    baglantim.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Yazı rengi kırımızı olan alanları yeniden gözden geçiriniz!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)

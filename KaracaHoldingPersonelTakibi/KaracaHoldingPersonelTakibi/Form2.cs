@@ -151,7 +151,7 @@ namespace KaracaHoldingPersonelTakibi
                     try
                     {
                         baglantim.Open();
-                        OleDbCommand eklekomut = new OleDbCommand("insert intop kullanicilar values ('" + textBox1.Text + "','" + textBox2.Text + "', '" + textBox3.Text + "','" + yetki + "','" + textBox4.Text + "','" + textBox5.Text + "')", baglantim);
+                        OleDbCommand eklekomut = new OleDbCommand("insert into kullanicilar values ('" + textBox1.Text + "','" + textBox2.Text + "', '" + textBox3.Text + "','" + yetki + "','" + textBox4.Text + "','" + textBox5.Text + "')", baglantim);
                         eklekomut.ExecuteNonQuery();
                         baglantim.Close();
                         MessageBox.Show("Yeni kullanıcı kaydı oluşturuldu!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -243,6 +243,31 @@ namespace KaracaHoldingPersonelTakibi
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if(textBox1.Text.Length==1)
+            {
+                bool kayit_arama_durumu = false;
+                baglantim.Open();
+                OleDbCommand selectsorgu = new OleDbCommand("select * from kullanicilar where tcno='" + textBox1.Text + "'", baglantim);
+                OleDbDataReader kayitokuma = selectsorgu.ExecuteReader();
+                while (kayitokuma.Read())
+                {
+                    kayit_arama_durumu = true;
+                    OleDbCommand deletesorgu = new OleDbCommand("delete from kullanicilar where tcno='" + textBox1.Text + "'", baglantim);
+                    deletesorgu.ExecuteNonQuery();
+                    MessageBox.Show("Kullanıcı kaydı silindi!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    baglantim.Close();
+                    kullanicilari_goster();
+                    topPage1_temizle();
+                    break;
+                }
+                if (kayit_arama_durumu==false)
+                
+                    MessageBox.Show("Silinecek kayıt bulunamadı!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    baglantim.Close();
+                    topPage1_temizle();
+            }
+            else
+                MessageBox.Show("Lütfen 11 karakterden oluşan bir TC Kimlik No giriniz!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
@@ -512,6 +537,11 @@ namespace KaracaHoldingPersonelTakibi
                 MessageBox.Show("Lütfen 11 haneli bir TC Kimlik No giriniz", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 topPage1_temizle();
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            topPage1_temizle();
         }
     }
 }

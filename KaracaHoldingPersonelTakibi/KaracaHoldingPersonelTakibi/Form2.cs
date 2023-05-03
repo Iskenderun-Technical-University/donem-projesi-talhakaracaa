@@ -358,7 +358,16 @@ namespace KaracaHoldingPersonelTakibi
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            OpenFileDialog resimsec = new OpenFileDialog();
+            resimsec.Title = "Personel resmi seçiniz";
+            //resimsec.Filter = "JPG Dosyalar (*.jpg) | *.jpg";   //Jpg resimler için bunu çalıştır.
+            //resimsec.Filter = " PNG Dosyalar (*.png) | *.png";  //Png resimler için bunu çalıştır.
+            
+            resimsec.Filter = "JPG Dosyalar (*.jpg) | *.jpg | PNG Dosyalar (*.png) | *.png"; //Hem JPG için hem de Png resimler için çalışır.
+            if (resimsec.ShowDialog() == DialogResult.OK)
+            {
+                this.pictureBox2.Image = new Bitmap(resimsec.OpenFile());
+            }
         }
 
         private void label20_Click(object sender, EventArgs e)

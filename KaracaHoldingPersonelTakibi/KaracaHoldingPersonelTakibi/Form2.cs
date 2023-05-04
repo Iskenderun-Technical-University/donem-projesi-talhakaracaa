@@ -387,7 +387,66 @@ namespace KaracaHoldingPersonelTakibi
 
         private void button8_Click(object sender, EventArgs e)
         {
+            string cinsiyet = "";
+            bool kayitkontrol = false;
 
+            baglantim.Open();
+            OleDbCommand selectsorgu = new OleDbCommand("select * from personeller where tcno='" + maskedTextBox1.Text + "'", baglantim);
+            OleDbDataReader kayitokuma = selectsorgu.ExecuteReader();
+            while (kayitokuma.Read())
+            {
+                kayitkontrol = true;
+                break;
+            }
+            baglantim.Close();
+
+            if (kayitkontrol == false)
+            {
+                if (pictureBox2.Image == null)
+                    button6.ForeColor = Color.Red;
+                else
+                    button6.ForeColor = Color.Black;
+
+                if (maskedTextBox1.MaskCompleted == false)
+                    label13.ForeColor = Color.Red;
+                else
+                    label13.ForeColor = Color.Black;
+
+                if (maskedTextBox2.MaskCompleted == false)
+                    label14.ForeColor = Color.Red;
+                else
+                    label14.ForeColor = Color.Black;
+
+                if (maskedTextBox3.MaskCompleted == false)
+                    label15.ForeColor = Color.Red;
+                else
+                    label15.ForeColor = Color.Black;
+
+                if (comboBox1.Text == "")
+                    label17.ForeColor = Color.Red;
+                else
+                    label17.ForeColor = Color.Black;
+
+                if (comboBox2.Text == "")
+                    label19.ForeColor = Color.Red;
+                else
+                    label19.ForeColor = Color.Black;
+
+                if (comboBox3.Text == "")
+                    label20.ForeColor = Color.Red;
+                else
+                    label20.ForeColor = Color.Black;
+
+                if (maskedTextBox4.MaskCompleted == false)
+                    label21.ForeColor = Color.Red;
+                else
+                    label21.ForeColor = Color.Black;
+
+                if (int.Parse(maskedTextBox4.Text) < 1000)
+                    label21.ForeColor = Color.Red;
+                else
+                    label21.ForeColor = Color.Black;
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

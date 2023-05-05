@@ -446,6 +446,35 @@ namespace KaracaHoldingPersonelTakibi
                     label21.ForeColor = Color.Red;
                 else
                     label21.ForeColor = Color.Black;
+
+                if(pictureBox2.Image!=null && maskedTextBox1.MaskCompleted != false && maskedTextBox2.MaskCompleted != false && maskedTextBox3.MaskCompleted != false && comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && maskedTextBox4.MaskCompleted != false)
+                {
+                    if (radioButton3.Checked == true)
+                        cinsiyet = "Bay";
+                    else if (radioButton4.Checked == true)
+                        cinsiyet = "Bayan";
+                    try
+                    {
+                        baglantim.Open();
+                        OleDbCommand eklekomutu = new OleDbCommand("insert into personeller values ('" + maskedTextBox1.Text + "','" + maskedTextBox2.Text + "','" + maskedTextBox3.Text + "','" + cinsiyet + "','" + comboBox1.Text + "','" + dateTimePicker1.Text + "','" + comboBox2.Text + "','" + comboBox3.Text + "','" + maskedTextBox4.Text + "')", baglantim);
+                        eklekomutu.ExecuteNonQuery();
+                        baglantim.Close();
+                        if (!Directory.Exists(Application.StartupPath + "\\personelresimler"))
+                            Directory.CreateDirectory(Application.StartupPath + "\\personelresimler");
+                        else
+                            pictureBox2.Image.Save(Application.StartupPath + "\\personelresimler\\" + maskedTextBox1.Text+".png");
+                        MessageBox.Show("Yeni personel kaydı oluşturuldu.", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        personelleri_goster();
+                        topPage2_temizle();
+                    }
+                    catch(Exception hatamsj)
+                    {
+                        MessageBox.Show(hatamsj.Message, "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        baglantim.Close();
+                    }
+                }
+
+                
             }
         }
 

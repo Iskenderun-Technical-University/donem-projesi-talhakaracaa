@@ -46,6 +46,7 @@ Bu otomasyon sistemi sayesinde, işletmelerin personel yönetimi süreçleri dah
 2. Personeller Tablosu
 
 ![personeller1](https://user-images.githubusercontent.com/101569754/236623592-1caa6fe3-a3c9-457b-9485-a3141c96fa1a.png)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ![personeller2](https://user-images.githubusercontent.com/101569754/236623595-edd77981-d320-4960-ad5f-62ae18c24819.png)
 
 

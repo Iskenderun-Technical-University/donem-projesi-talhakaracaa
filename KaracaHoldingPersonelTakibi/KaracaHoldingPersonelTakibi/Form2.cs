@@ -324,6 +324,7 @@ namespace KaracaHoldingPersonelTakibi
             maskedTextBox2.Mask = "LL????????????????????";
             maskedTextBox3.Mask = "LL????????????????????";
             maskedTextBox4.Mask = "0000";
+            maskedTextBox4.Text = "0";
             maskedTextBox2.Text.ToUpper();
             maskedTextBox3.Text.ToUpper();
 
@@ -354,6 +355,7 @@ namespace KaracaHoldingPersonelTakibi
             dateTimePicker1.Format = DateTimePickerFormat.Short;
 
             radioButton3.Checked = true;
+            personelleri_goster();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -447,7 +449,7 @@ namespace KaracaHoldingPersonelTakibi
                 else
                     label21.ForeColor = Color.Black;
 
-                if(pictureBox2.Image!=null && maskedTextBox1.MaskCompleted != false && maskedTextBox2.MaskCompleted != false && maskedTextBox3.MaskCompleted != false && comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && maskedTextBox4.MaskCompleted != false)
+                if (pictureBox2.Image != null && maskedTextBox1.MaskCompleted != false && maskedTextBox2.MaskCompleted != false && maskedTextBox3.MaskCompleted != false && comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && maskedTextBox4.MaskCompleted != false)
                 {
                     if (radioButton3.Checked == true)
                         cinsiyet = "Bay";
@@ -461,21 +463,33 @@ namespace KaracaHoldingPersonelTakibi
                         baglantim.Close();
                         if (!Directory.Exists(Application.StartupPath + "\\personelresimler"))
                             Directory.CreateDirectory(Application.StartupPath + "\\personelresimler");
-                        else
-                            pictureBox2.Image.Save(Application.StartupPath + "\\personelresimler\\" + maskedTextBox1.Text+".png");
+                        
+                        pictureBox2.Image.Save(Application.StartupPath + "\\personelresimler\\" + maskedTextBox1.Text + ".png");
                         MessageBox.Show("Yeni personel kaydı oluşturuldu.", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         personelleri_goster();
                         topPage2_temizle();
+                        maskedTextBox4.Text = "0";
                     }
-                    catch(Exception hatamsj)
+                    catch (Exception hatamsj)
                     {
                         MessageBox.Show(hatamsj.Message, "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         baglantim.Close();
                     }
                 }
 
-                
+                else
+                {
+                    MessageBox.Show("Yazı rengi kırmızı olan alanaları yeniden gözden geçiriniz!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
+
+            else
+            {
+                MessageBox.Show("Girilen TC Kimlik Numarası daha önceden kayıtlıdır", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

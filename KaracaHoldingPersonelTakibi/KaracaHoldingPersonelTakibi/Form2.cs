@@ -654,5 +654,30 @@ namespace KaracaHoldingPersonelTakibi
         {
             topPage1_temizle();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            bool kayit_arama_durumu = false;
+            if (maskedTextBox1.Text.Length == 11)
+            {
+                baglantim.Open();
+                OleDbCommand selectsorgu = new OleDbCommand("select * from personeller where tcno='" + maskedTextBox1.Text + "'", baglantim);
+                OleDbDataReader kayitokuma = selectsorgu.ExecuteReader();
+                while (kayitokuma.Read())
+                {
+                    kayit_arama_durumu = true;
+                    try
+                    {
+                        pictureBox2.Image = Image.FromFile(Application.StartupPath + "\\personelresimler\\" + kayitokuma.GetValue(0).ToString() + ".png");
+                    }
+                    catch
+                    {
+                        pictureBox2.Image = Image.FromFile(Application.StartupPath + "\\personelresimler\\resimyok.png");
+
+                    }
+                }
+                baglantim.Close();
+            }
+        }
     }
 }

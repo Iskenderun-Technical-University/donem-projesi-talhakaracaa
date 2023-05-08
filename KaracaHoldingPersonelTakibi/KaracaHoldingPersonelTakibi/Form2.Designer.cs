@@ -482,6 +482,7 @@
             this.button7.TabIndex = 22;
             this.button7.Text = "Ara";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // comboBox3
             // 

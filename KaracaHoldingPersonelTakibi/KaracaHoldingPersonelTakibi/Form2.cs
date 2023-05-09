@@ -675,8 +675,27 @@ namespace KaracaHoldingPersonelTakibi
                         pictureBox2.Image = Image.FromFile(Application.StartupPath + "\\personelresimler\\resimyok.png");
 
                     }
+                    maskedTextBox2.Text = kayitokuma.GetValue(1).ToString();
+                    maskedTextBox3.Text = kayitokuma.GetValue(2).ToString();
+                    if (kayitokuma.GetValue(3).ToString() == "Bay")
+                        radioButton3.Checked = true;
+                    else
+                        radioButton4.Checked = true;
+                    comboBox1.Text = kayitokuma.GetValue(4).ToString();
+                    dateTimePicker1.Text = kayitokuma.GetValue(5).ToString();
+                    comboBox2.Text = kayitokuma.GetValue(6).ToString();
+                    comboBox3.Text = kayitokuma.GetValue(7).ToString();
+                    maskedTextBox4.Text = kayitokuma.GetValue(8).ToString();
+                    break;
                 }
-                baglantim.Close();
+                if (kayit_arama_durumu == false)
+                    MessageBox.Show("Aranan Kayıt Bulunamadı!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                baglantim.Close(); 
+            }
+            else
+            {
+                MessageBox.Show("11 haneli TC no Giriniz!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
             }
         }
     }

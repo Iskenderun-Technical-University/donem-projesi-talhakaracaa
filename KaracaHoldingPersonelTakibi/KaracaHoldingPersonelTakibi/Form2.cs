@@ -48,7 +48,7 @@ namespace KaracaHoldingPersonelTakibi
             try
             {
                 baglantim.Open();
-                OleDbDataAdapter personelleri_listele = new OleDbDataAdapter("select tcno AS [TC KİMLİK NO],Ad AS [ADI],soyad AS [SOYADI],cinsiyet AS [CİNSİYETİ], mezuniyet AS [MEZUNİYETİ], dogumtarihi AS [DOĞUM TARİHİ], gorevi AS [GÖREVİ], görevyeri AS [GÖREV YERİ], maasi AS [MAAŞI] from personeller order by ad  ASC", baglantim);
+                OleDbDataAdapter personelleri_listele = new OleDbDataAdapter("select tcno AS [TC KİMLİK NO],Ad AS [ADI],soyad AS [SOYADI],cinsiyet AS [CİNSİYETİ], mezuniyet AS [MEZUNİYETİ], dogumtarihi AS [DOĞUM TARİHİ], gorevi AS [GÖREVİ], gorevyeri AS [GÖREV YERİ], maasi AS [MAAŞI] from personeller order by ad ASC", baglantim);
                 DataSet dshafiza = new DataSet();
                 personelleri_listele.Fill(dshafiza);
                 dataGridView2.DataSource = dshafiza.Tables[0];
@@ -697,6 +697,85 @@ namespace KaracaHoldingPersonelTakibi
                 MessageBox.Show("11 haneli TC no Giriniz!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
             }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string cinsiyet = "";
+
+            if (pictureBox2.Image == null)
+                button6.ForeColor = Color.Red;
+            else
+                button6.ForeColor = Color.Black;
+
+            if (maskedTextBox1.MaskCompleted == false)
+                label13.ForeColor = Color.Red;
+            else
+                label13.ForeColor = Color.Black;
+
+            if (maskedTextBox2.MaskCompleted == false)
+                label14.ForeColor = Color.Red;
+            else
+                label14.ForeColor = Color.Black;
+
+            if (maskedTextBox3.MaskCompleted == false)
+                label15.ForeColor = Color.Red;
+            else
+                label15.ForeColor = Color.Black;
+
+            if (comboBox1.Text == "")
+                label17.ForeColor = Color.Red;
+            else
+                label17.ForeColor = Color.Black;
+
+            if (comboBox2.Text == "")
+                label19.ForeColor = Color.Red;
+            else
+                label19.ForeColor = Color.Black;
+
+            if (comboBox3.Text == "")
+                label20.ForeColor = Color.Red;
+            else
+                label20.ForeColor = Color.Black;
+
+            if (maskedTextBox4.MaskCompleted == false)
+                label21.ForeColor = Color.Red;
+            else
+                label21.ForeColor = Color.Black;
+
+            if (int.Parse(maskedTextBox4.Text) < 1000)
+                label21.ForeColor = Color.Red;
+            else
+                label21.ForeColor = Color.Black;
+
+            if (pictureBox2.Image != null && maskedTextBox1.MaskCompleted != false && maskedTextBox2.MaskCompleted != false && maskedTextBox3.MaskCompleted != false && comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && maskedTextBox4.MaskCompleted != false)
+            {
+                if (radioButton3.Checked == true)
+                    cinsiyet = "Bay";
+                else if (radioButton4.Checked == true)
+                    cinsiyet = "Bayan";
+                try
+                {
+                    baglantim.Open();
+                    OleDbCommand guncellekomutu = new OleDbCommand("update personeller set ad ='" + maskedTextBox2.Text + "',soyad='" + maskedTextBox3.Text + "'cinsiyet=,'" + cinsiyet + "',mezuniyet='" + comboBox1.Text + "',dogumtarihi='" + dateTimePicker1.Text + "',gorevi='" + comboBox2.Text + "',gorevyeri'" + comboBox3.Text + "',maasi'" + maskedTextBox4.Text + "' where tcno='" + maskedTextBox1.Text + "'", baglantim);
+                    guncellekomutu.ExecuteNonQuery();
+                    baglantim.Close();
+                    personelleri_goster();
+                    topPage2_temizle();
+                    maskedTextBox4.Text = "0";
+                }
+                catch (Exception hatamsj)
+                {
+                    MessageBox.Show(hatamsj.Message, "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    baglantim.Close();
+                }
+            }
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

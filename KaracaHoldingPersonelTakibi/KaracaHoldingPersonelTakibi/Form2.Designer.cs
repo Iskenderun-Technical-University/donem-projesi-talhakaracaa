@@ -436,6 +436,7 @@
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(631, 128);
             this.dataGridView2.TabIndex = 27;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // button11
             // 
@@ -463,6 +464,7 @@
             this.button9.TabIndex = 24;
             this.button9.Text = "Güncelle";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 

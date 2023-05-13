@@ -777,5 +777,37 @@ namespace KaracaHoldingPersonelTakibi
         {
 
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (maskedTextBox1.MaskCompleted == true)
+            {
+                bool kayit_arama_durumu = false;
+                baglantim.Open();
+                OleDbCommand arama_sorgusu = new OleDbCommand("select * from personeller where tcno='" + maskedTextBox1.Text + "'", baglantim);
+                OleDbDataReader kayitokuma = arama_sorgusu.ExecuteReader();
+                while (kayitokuma.Read())
+                {
+                    kayit_arama_durumu = true;
+                    OleDbCommand deletesorgu = new OleDbCommand("delete from personeller where tcno='" + maskedTextBox1.Text + "'", baglantim);
+                    deletesorgu.ExecuteNonQuery();
+                    break;
+                }
+                if (kayit_arama_durumu == false)
+                {
+                    MessageBox.Show("Silincek kayıt bulunamadı!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                baglantim.Close();
+                personelleri_goster();
+                topPage2_temizle();
+                maskedTextBox4.Text = "0";
+            }
+            else
+            {
+                MessageBox.Show("Lütfen 11 karakterden oluşan bir TC Kimlik No giriniz!", "SKY Personel Takip Programı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                topPage2_temizle();
+                maskedTextBox4.Text = "0";
+            }
+        }
     }
 }

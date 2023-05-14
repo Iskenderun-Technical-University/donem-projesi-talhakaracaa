@@ -33,3 +33,4 @@ C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTaki
 C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.exe
 C:\Users\Talha\Desktop\donem-projesi-talhakaracaa-main\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.pdb
 C:\Users\Talha\Desktop\donem-projesi-talhakaracaa\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.Form2.resources
+C:\Users\Talha\Desktop\donem-projesi-talhakaracaa\KaracaHoldingPersonelTakibi\KaracaHoldingPersonelTakibi\obj\Debug\KaracaHoldingPersonelTakibi.Form3.resources

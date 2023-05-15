@@ -65,5 +65,46 @@ namespace KaracaHoldingPersonelTakibi
             maskedTextBox1.Mask = "00000000000";
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bool kayit_arama_durumu = false;
+            if (maskedTextBox1.Text.Length == 11)
+            {
+                baglantim.Open();
+                OleDbCommand selectsorgu = new OleDbCommand("select * from personeller where tcno='" + maskedTextBox1.Text + "'", baglantim);
+                OleDbDataReader kayitokuma = selectsorgu.ExecuteReader();
+                while (kayitokuma.Read())
+                {
+                    kayit_arama_durumu = true;
+                    try
+                    {
+                        pictureBox1.Image = Image.FromFile(Application.StartupPath + "\\personelresimler\\" + kayitokuma.GetValue(0) + ".png");
+                    }
+                    catch
+                    {
+                        pictureBox1.Image = Image.FromFile(Application.StartupPath + "\\personelresimler\\resimyok.png");
+                    }
+                    label10.Text = kayitokuma.GetValue(1).ToString();
+                    label11.Text = kayitokuma.GetValue(2).ToString();
+                    if (kayitokuma.GetValue(3).ToString() == "Bay")
+                        label12.Text = "Bay";
+                    else
+                        label12.Text = "Bayan";
+                    label13.Text = kayitokuma.GetValue(4).ToString();
+                    label14.Text = kayitokuma.GetValue(5).ToString();
+                    label15.Text = kayitokuma.GetValue(6).ToString();
+                    label16.Text = kayitokuma.GetValue(7).ToString();
+                    label17.Text = kayitokuma.GetValue(8).ToString();
+                    break;
+
+                }
+                if (kayit_arama_durumu == false)
+                    MessageBox.Show("Aranan kayıt bulunamadı");
+                baglantim.Close();
+            }
+            else
+                MessageBox.Show("11 haneli bir TC Kimlik No giriniz");
+        }
     }
 }

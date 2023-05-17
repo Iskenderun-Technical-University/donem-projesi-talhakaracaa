@@ -809,5 +809,25 @@ namespace KaracaHoldingPersonelTakibi
                 maskedTextBox4.Text = "0";
             }
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

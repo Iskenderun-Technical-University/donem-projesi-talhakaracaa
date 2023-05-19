@@ -288,6 +288,19 @@ namespace KaracaHoldingPersonelTakibi
             pictureBox1.Width = 150;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
+            int enteredValue;
+            if (int.TryParse(maskedTextBox4.Text, out enteredValue))
+            {
+                if (enteredValue < 8500)
+                {
+                    maskedTextBox4.Text = "8500";
+                }
+            }
+            else
+            {
+                maskedTextBox4.Text = "8500";
+            }
+
 
             try
             {
@@ -323,7 +336,7 @@ namespace KaracaHoldingPersonelTakibi
             maskedTextBox1.Mask = "00000000000";
             maskedTextBox2.Mask = "LL????????????????????";
             maskedTextBox3.Mask = "LL????????????????????";
-            maskedTextBox4.Mask = "0000";
+            maskedTextBox4.Mask = "00000";
             maskedTextBox4.Text = "0";
             maskedTextBox2.Text.ToUpper();
             maskedTextBox3.Text.ToUpper();

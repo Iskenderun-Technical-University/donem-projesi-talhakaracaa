@@ -153,6 +153,7 @@
             this.label9.Size = new System.Drawing.Size(44, 16);
             this.label9.TabIndex = 10;
             this.label9.Text = "Maaşı";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // maskedTextBox1
             // 
@@ -233,6 +234,7 @@
             this.label17.Size = new System.Drawing.Size(42, 16);
             this.label17.TabIndex = 19;
             this.label17.Text = "_____";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label18
             // 

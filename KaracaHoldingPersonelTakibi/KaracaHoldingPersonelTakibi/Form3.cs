@@ -106,15 +106,5 @@ namespace KaracaHoldingPersonelTakibi
             else
                 MessageBox.Show("11 haneli bir TC Kimlik No giriniz");
         }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -91,6 +91,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label23 = new System.Windows.Forms.Label();
+            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -396,6 +398,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Cornsilk;
+            this.tabPage2.Controls.Add(this.maskedTextBox5);
+            this.tabPage2.Controls.Add(this.label23);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Controls.Add(this.button11);
             this.tabPage2.Controls.Add(this.button10);
@@ -434,7 +438,7 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(29, 396);
+            this.dataGridView2.Location = new System.Drawing.Point(29, 445);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
@@ -551,6 +555,7 @@
             this.maskedTextBox4.Name = "maskedTextBox4";
             this.maskedTextBox4.Size = new System.Drawing.Size(132, 22);
             this.maskedTextBox4.TabIndex = 15;
+            this.maskedTextBox4.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox4_MaskInputRejected);
             // 
             // maskedTextBox3
             // 
@@ -565,6 +570,7 @@
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(174, 22);
             this.maskedTextBox2.TabIndex = 13;
+            this.maskedTextBox2.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox2_MaskInputRejected);
             // 
             // maskedTextBox1
             // 
@@ -715,6 +721,23 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(553, 280);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(41, 16);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "Email";
+            // 
+            // maskedTextBox5
+            // 
+            this.maskedTextBox5.Location = new System.Drawing.Point(628, 280);
+            this.maskedTextBox5.Name = "maskedTextBox5";
+            this.maskedTextBox5.Size = new System.Drawing.Size(132, 22);
+            this.maskedTextBox5.TabIndex = 29;
+            this.maskedTextBox5.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox5_MaskInputRejected);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -807,5 +830,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox5;
     }
 }

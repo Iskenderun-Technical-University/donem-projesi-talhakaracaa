@@ -48,7 +48,7 @@ namespace KaracaHoldingPersonelTakibi
             try
             {
                 baglantim.Open();
-                OleDbDataAdapter personelleri_listele = new OleDbDataAdapter("select tcno AS [TC KİMLİK NO],Ad AS [ADI],soyad AS [SOYADI],cinsiyet AS [CİNSİYETİ], mezuniyet AS [MEZUNİYETİ], dogumtarihi AS [DOĞUM TARİHİ], gorevi AS [GÖREVİ], gorevyeri AS [GÖREV YERİ], maasi AS [MAAŞI] from personeller order by ad ASC", baglantim);
+                OleDbDataAdapter personelleri_listele = new OleDbDataAdapter("select tcno AS [TC KİMLİK NO],Ad AS [ADI],soyad AS [SOYADI],cinsiyet AS [CİNSİYETİ], mezuniyet AS [MEZUNİYETİ], dogumtarihi AS [DOĞUM TARİHİ], gorevi AS [GÖREVİ], gorevyeri AS [GÖREV YERİ], maasi AS [MAAŞI], email AS [E-Mail] from personeller order by ad ASC", baglantim);
                 DataSet dshafiza = new DataSet();
                 personelleri_listele.Fill(dshafiza);
                 dataGridView2.DataSource = dshafiza.Tables[0];
@@ -458,7 +458,7 @@ namespace KaracaHoldingPersonelTakibi
                     try
                     {
                         baglantim.Open();
-                        OleDbCommand eklekomutu = new OleDbCommand("insert into personeller values ('" + maskedTextBox1.Text + "','" + maskedTextBox2.Text + "','" + maskedTextBox3.Text + "','" + cinsiyet + "','" + comboBox1.Text + "','" + dateTimePicker1.Text + "','" + comboBox2.Text + "','" + comboBox3.Text + "','" + maskedTextBox4.Text + "')", baglantim);
+                        OleDbCommand eklekomutu = new OleDbCommand("insert into personeller values ('" + maskedTextBox1.Text + "','" + maskedTextBox2.Text + "','" + maskedTextBox3.Text + "','" + cinsiyet + "','" + comboBox1.Text + "','" + dateTimePicker1.Text + "','" + comboBox2.Text + "','" + comboBox3.Text + "','" + maskedTextBox4.Text + "', '" + maskedTextBox5.Text + "')", baglantim);
                         eklekomutu.ExecuteNonQuery();
                         baglantim.Close();
                         if (!Directory.Exists(Application.StartupPath + "\\personelresimler"))
@@ -757,7 +757,7 @@ namespace KaracaHoldingPersonelTakibi
                 try
                 {
                     baglantim.Open();
-                    OleDbCommand guncellekomutu = new OleDbCommand("update personeller set ad ='" + maskedTextBox2.Text + "',soyad='" + maskedTextBox3.Text + "'cinsiyet=,'" + cinsiyet + "',mezuniyet='" + comboBox1.Text + "',dogumtarihi='" + dateTimePicker1.Text + "',gorevi='" + comboBox2.Text + "',gorevyeri'" + comboBox3.Text + "',maasi'" + maskedTextBox4.Text + "' where tcno='" + maskedTextBox1.Text + "'", baglantim);
+                    OleDbCommand guncellekomutu = new OleDbCommand("update personeller set ad ='" + maskedTextBox2.Text + "',soyad='" + maskedTextBox3.Text + "',cinsiyet='" + cinsiyet + "',mezuniyet='" + comboBox1.Text + "',dogumtarihi='" + dateTimePicker1.Text + "',gorevi='" + comboBox2.Text + "',gorevyeri'" + comboBox3.Text + "',maasi'" + maskedTextBox4.Text + "',email ='" + maskedTextBox5.Text + "' where tcno='" + maskedTextBox1.Text + "'", baglantim);
                     guncellekomutu.ExecuteNonQuery();
                     baglantim.Close();
                     personelleri_goster();
@@ -826,6 +826,21 @@ namespace KaracaHoldingPersonelTakibi
         }
 
         private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox4_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox5_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }

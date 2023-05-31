@@ -48,7 +48,7 @@ namespace KaracaHoldingPersonelTakibi
             try
             {
                 baglantim.Open();
-                OleDbDataAdapter personelleri_listele = new OleDbDataAdapter("select tcno AS [TC KİMLİK NO],Ad AS [ADI],soyad AS [SOYADI],cinsiyet AS [CİNSİYETİ], mezuniyet AS [MEZUNİYETİ], dogumtarihi AS [DOĞUM TARİHİ], gorevi AS [GÖREVİ], gorevyeri AS [GÖREV YERİ], maasi AS [MAAŞI], email AS [E-Mail] from personeller order by ad ASC", baglantim);
+                OleDbDataAdapter personelleri_listele = new OleDbDataAdapter("select tcno AS [TC KİMLİK NO],Ad AS [ADI],soyad AS [SOYADI],cinsiyet AS [CİNSİYETİ], mezuniyet AS [MEZUNİYETİ], dogumtarihi AS [DOĞUM TARİHİ], gorevi AS [GÖREVİ], gorevyeri AS [GÖREV YERİ], maasi AS [MAAŞI], email AS [E-Mail], telefon AS [Telefon] from personeller order by ad ASC", baglantim);
                 DataSet dshafiza = new DataSet();
                 personelleri_listele.Fill(dshafiza);
                 dataGridView2.DataSource = dshafiza.Tables[0];
@@ -458,7 +458,7 @@ namespace KaracaHoldingPersonelTakibi
                     try
                     {
                         baglantim.Open();
-                        OleDbCommand eklekomutu = new OleDbCommand("insert into personeller values ('" + maskedTextBox1.Text + "','" + maskedTextBox2.Text + "','" + maskedTextBox3.Text + "','" + cinsiyet + "','" + comboBox1.Text + "','" + dateTimePicker1.Text + "','" + comboBox2.Text + "','" + comboBox3.Text + "','" + maskedTextBox4.Text + "', '" + maskedTextBox5.Text + "')", baglantim);
+                        OleDbCommand eklekomutu = new OleDbCommand("insert into personeller values ('" + maskedTextBox1.Text + "','" + maskedTextBox2.Text + "','" + maskedTextBox3.Text + "','" + cinsiyet + "','" + comboBox1.Text + "','" + dateTimePicker1.Text + "','" + comboBox2.Text + "','" + comboBox3.Text + "','" + maskedTextBox4.Text + "', '" + maskedTextBox5.Text + "','" + maskedTextBox6.Text + "')", baglantim);
                         eklekomutu.ExecuteNonQuery();
                         baglantim.Close();
                         if (!Directory.Exists(Application.StartupPath + "\\personelresimler"))

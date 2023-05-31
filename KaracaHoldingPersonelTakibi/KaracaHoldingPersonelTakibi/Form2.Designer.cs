@@ -58,6 +58,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -91,8 +93,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label23 = new System.Windows.Forms.Label();
-            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.maskedTextBox6 = new System.Windows.Forms.MaskedTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -398,6 +400,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Cornsilk;
+            this.tabPage2.Controls.Add(this.maskedTextBox6);
+            this.tabPage2.Controls.Add(this.label24);
             this.tabPage2.Controls.Add(this.maskedTextBox5);
             this.tabPage2.Controls.Add(this.label23);
             this.tabPage2.Controls.Add(this.dataGridView2);
@@ -434,6 +438,23 @@
             this.tabPage2.Size = new System.Drawing.Size(810, 579);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Personel İşlemleri";
+            // 
+            // maskedTextBox5
+            // 
+            this.maskedTextBox5.Location = new System.Drawing.Point(628, 243);
+            this.maskedTextBox5.Name = "maskedTextBox5";
+            this.maskedTextBox5.Size = new System.Drawing.Size(132, 22);
+            this.maskedTextBox5.TabIndex = 29;
+            this.maskedTextBox5.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox5_MaskInputRejected);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(560, 243);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(41, 16);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "Email";
             // 
             // dataGridView2
             // 
@@ -498,7 +519,7 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(628, 208);
+            this.comboBox3.Location = new System.Drawing.Point(628, 171);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(132, 24);
             this.comboBox3.TabIndex = 21;
@@ -506,7 +527,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(628, 177);
+            this.comboBox2.Location = new System.Drawing.Point(628, 140);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(132, 24);
             this.comboBox2.TabIndex = 20;
@@ -551,7 +572,7 @@
             // 
             // maskedTextBox4
             // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(628, 244);
+            this.maskedTextBox4.Location = new System.Drawing.Point(628, 207);
             this.maskedTextBox4.Name = "maskedTextBox4";
             this.maskedTextBox4.Size = new System.Drawing.Size(132, 22);
             this.maskedTextBox4.TabIndex = 15;
@@ -583,7 +604,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(560, 250);
+            this.label21.Location = new System.Drawing.Point(560, 213);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(44, 16);
             this.label21.TabIndex = 11;
@@ -592,7 +613,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(536, 216);
+            this.label20.Location = new System.Drawing.Point(536, 179);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(71, 16);
             this.label20.TabIndex = 10;
@@ -602,7 +623,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(560, 185);
+            this.label19.Location = new System.Drawing.Point(560, 148);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(47, 16);
             this.label19.TabIndex = 9;
@@ -721,22 +742,21 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // label23
+            // label24
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(553, 280);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(41, 16);
-            this.label23.TabIndex = 5;
-            this.label23.Text = "Email";
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(554, 278);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(53, 16);
+            this.label24.TabIndex = 30;
+            this.label24.Text = "Telefon";
             // 
-            // maskedTextBox5
+            // maskedTextBox6
             // 
-            this.maskedTextBox5.Location = new System.Drawing.Point(628, 280);
-            this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.Size = new System.Drawing.Size(132, 22);
-            this.maskedTextBox5.TabIndex = 29;
-            this.maskedTextBox5.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox5_MaskInputRejected);
+            this.maskedTextBox6.Location = new System.Drawing.Point(628, 275);
+            this.maskedTextBox6.Name = "maskedTextBox6";
+            this.maskedTextBox6.Size = new System.Drawing.Size(132, 22);
+            this.maskedTextBox6.TabIndex = 31;
             // 
             // Form2
             // 
@@ -832,5 +852,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.MaskedTextBox maskedTextBox5;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox6;
+        private System.Windows.Forms.Label label24;
     }
 }
